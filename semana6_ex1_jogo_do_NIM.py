@@ -14,15 +14,22 @@ def partida():
     m = int(m)
     fim_de_jogo = False
     vez_computador = False
+
+    # Exceção (5,3) e (11,3): o computador deve começar
+    # Exceção (9,2): o usuário deve começar
     
     if n <= m:
-         print("O computador tirou ",n," peças.")
-         print("Fim do jogo! O computador ganhou!")
-         fim_de_jogo = True
+        print("Computador começa!")
+        print("O computador tirou",n," peças.")
+        print("Fim do jogo! O computador ganhou!")
+        fim_de_jogo = True
     else: 
-        if n % (m + 1) == 0 or n == m or n == 5 and m ==3 or n == 9 and m == 2 or n == 11 and m == 3:
+        if n % (m + 1) == 0 or n == m or n == 5 and m ==3 or n == 11 and m == 3:
             print("Computador começa!")
-            vez_computador = True   
+            vez_computador = True
+        elif n == 9 and m == 2:
+            print("Voce começa!")
+            vez_computador = False   
         else:
             print("Voce começa!")
             vez_computador = False
@@ -77,31 +84,31 @@ def computador_escolhe_jogada(n,m):
         return n   
 
 def usuario_escolhe_jogada(n,m):
-    # recebe os mesmos parâmetros, solicita que o jogador informe sua jogada e verifica se o valor informado é válido. 
-    # Se o valor informado for válido, a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.
-            
+    # recebe os mesmos parâmetros, solicita que o jogador informe sua jogada e verifica se o valor informado é válido. 4
+    # Se o valor informado for válido, a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.4
+    # Pseudocódigo:
+        # Recebe jogada
+        # Valida Jogada
+            # Se jogada não for válida, pede de novo
+    def valida_jogada(j,n,m):
+      if j > m or j > n or j < 1:
+        return False
+      else:
+        return True
+
     jogada = input("Quantas peças você vai tirar? ")
     jogada = int(jogada)
-    # Valida jogada
-    if jogada > m or jogada < 1:
-            while jogada > m or jogada < 1:
-                jogada = input("Oops! Jogada inválida! Tente de novo ")
-                jogada = int(jogada)
+    validade = False
+    validade = valida_jogada(jogada,n,m)
+    while validade == False:
+            jogada = input("Oops! Jogada inválida! Tente de novo ")
+            jogada = int(jogada)
+            validade = valida_jogada(jogada,n,m)   
     # Se jogada é válida, verifica se ainda existe um n. Se não houver, retorna zero:
-    if n < 1:
-        return 0
-    # Se jogada é válida e existe um n, analisa todos os cenários se n é menor ou igual a m e retorna
-    if n <= m:
-        if jogada < n:
-            return jogada
-        else:
-            return n
-    # # Se jogada é válida e existe um n, analisa todos os cenários se n maior que m e retorna
-    else:
-        return jogada
-    
+    return jogada
 
-partida()
+print(usuario_escolhe_jogada(3,5))  
+# partida()
 
 
 
