@@ -162,24 +162,30 @@ def usuario_escolhe_jogada(n,m):
     '''
     
             
-    if n < 1:
-        return 0
-    elif n <= m:
-        return n
-    else:
-        jogada = input("Quantas peças você vai tirar? ")
-        jogada = int(jogada)
-        if jogada > m or jogada < 1:
+    jogada = input("Quantas peças você vai tirar? ")
+    jogada = int(jogada)
+    # Valida jogada
+    if jogada > m or jogada < 1:
             while jogada > m or jogada < 1:
                 jogada = input("Oops! Jogada inválida! Tente de novo ")
                 jogada = int(jogada)
+    # Se jogada é válida, analisa todos os cenários se n é menor ou igual a m e retorna
+    if n <= m:
+        if jogada < n:
+            return jogada
+        else:
+            return n
+    # # Se jogada é válida, analisa todos os cenários se n maior que m e retorna
+    else: 
+        if n < 1:
+            return 0
+        elif n >= m:
+            return n
+        else:
             return jogada
     
 
-
-
-
-usuario_escolhe_jogada(0,3)
+print(usuario_escolhe_jogada(3,5))
 
 
 # partida()
