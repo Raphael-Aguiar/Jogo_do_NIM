@@ -1,6 +1,4 @@
-'''
-
-'''
+# Jogo do NIM
 
 def partida():
     # não recebe nenhum parâmetro, solicita ao usuário que informe os valores de n e m e inicia o jogo, alternando entre jogadas do computador e do usuário
@@ -14,9 +12,6 @@ def partida():
     m = int(m)
     fim_de_jogo = False
     vez_computador = False
-
-    # Exceção (5,3) e (11,3): o computador deve começar
-    # Exceção (9,2): o usuário deve começar
     
     if n <= m:
         print("Computador começa!")
@@ -84,12 +79,8 @@ def computador_escolhe_jogada(n,m):
         return n   
 
 def usuario_escolhe_jogada(n,m):
-    # recebe os mesmos parâmetros, solicita que o jogador informe sua jogada e verifica se o valor informado é válido. 4
-    # Se o valor informado for válido, a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.4
-    # Pseudocódigo:
-        # Recebe jogada
-        # Valida Jogada
-            # Se jogada não for válida, pede de novo
+    # recebe os mesmos parâmetros, solicita que o jogador informe sua jogada e verifica se o valor informado é válido.
+    # Se o valor informado for válido, a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.
     def valida_jogada(j,n,m):
       if j > m or j > n or j < 1:
         return False
@@ -104,18 +95,6 @@ def usuario_escolhe_jogada(n,m):
             jogada = input("Oops! Jogada inválida! Tente de novo ")
             jogada = int(jogada)
             validade = valida_jogada(jogada,n,m)   
-    # Se jogada é válida, verifica se ainda existe um n. Se não houver, retorna zero:
     return jogada
 
-print(usuario_escolhe_jogada(3,5))  
-# partida()
-
-
-
-# def campeonato():
-    # Essa nova função deve realizar três partidas seguidas do jogo e, ao final, mostrar o placar dessas três partidas e indicar o vencedor do campeonato. 
-    # O placar deve ser impresso na forma
-    # Placar: Você ??? X ??? Computador
-    # Dado que é possível jogar partidas individuais ou campeonatos, seu programa deve começar solicitando ao usuário que escolha se prefere jogar:
-    # apenas uma partida (opção 1) ou um campeonato (opção 2)
-    
+partida()
