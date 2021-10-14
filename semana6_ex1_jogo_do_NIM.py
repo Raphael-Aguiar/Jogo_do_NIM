@@ -1,3 +1,4 @@
+# Jogo do NIM
 
 def campeonato():
     modo = input("Bem-vindo ao jogo do NIM! Escolha: /n 1 - para jogar uma partida isolada; /n 2 - para jogar um campeonato: ")
@@ -13,6 +14,7 @@ def campeonato():
         print("**** Rodada 3 ****")
         partida()
     print("**** Final do campeonato! /n Placar: Você 0 X 3 Computador ****")
+
 
 def partida():
     n = input("Quantas peças? ")
@@ -83,6 +85,8 @@ def computador_escolhe_jogada(n,m):
         return n   
 
 def usuario_escolhe_jogada(n,m):
+    # recebe os mesmos parâmetros, solicita que o jogador informe sua jogada e verifica se o valor informado é válido.
+    # Se o valor informado for válido, a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.
     def valida_jogada(j,n,m):
       if j > m or j > n or j < 1:
         return False
@@ -97,7 +101,6 @@ def usuario_escolhe_jogada(n,m):
             jogada = input("Oops! Jogada inválida! Tente de novo ")
             jogada = int(jogada)
             validade = valida_jogada(jogada,n,m)   
-    # Se jogada é válida, verifica se ainda existe um n. Se não houver, retorna zero:
     return jogada
 
-campeonato()
+partida()
