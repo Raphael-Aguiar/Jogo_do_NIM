@@ -1,6 +1,4 @@
-'''
 
-'''
 def campeonato():
     modo = input("Bem-vindo ao jogo do NIM! Escolha: /n 1 - para jogar uma partida isolada; /n 2 - para jogar um campeonato: ")
     
@@ -16,22 +14,13 @@ def campeonato():
         partida()
     print("**** Final do campeonato! /n Placar: Você 0 X 3 Computador ****")
 
-
 def partida():
-    # não recebe nenhum parâmetro, solicita ao usuário que informe os valores de n e m e inicia o jogo, alternando entre jogadas do computador e do usuário
-    # (ou seja, chamadas às duas funções anteriores). A escolha da jogada inicial deve ser feita em função da estratégia vencedora, como dito anteriormente. 
-    # A cada jogada, deve ser impresso na tela o estado atual do jogo, ou seja, quantas peças foram removidas na última jogada e quantas restam na mesa. 
-    # Quando a última peça é removida, essa função imprime na tela a mensagem "O computador ganhou!" ou "Você ganhou!" conforme o caso.
-    
     n = input("Quantas peças? ")
     m = input("Limite de peças por jogada? ")
     n = int(n)
     m = int(m)
     fim_de_jogo = False
     vez_computador = False
-
-    # Exceção (5,3) e (11,3): o computador deve começar
-    # Exceção (9,2): o usuário deve começar
     
     if n <= m:
         print("Computador começa!")
@@ -40,10 +29,7 @@ def partida():
         fim_de_jogo = True
 
     else: 
-        if n == 9 and m == 2:
-            print("Voce começa!")
-            vez_computador = False   
-        elif n % (m + 1) == 0 or n == m or n == 5 and m ==3 or n == 11 and m == 3:
+        if n % (m + 1) == 0:
             print("Computador começa!")
             vez_computador = True
         else:
@@ -81,9 +67,6 @@ def partida():
                     vez_computador = True
 
 def computador_escolhe_jogada(n,m):
-    # recebe, como parâmetros, os números n e m descritos acima e devolve um inteiro correspondente à próxima jogada do computador 
-    # (ou seja, quantas peças o computador deve retirar do tabuleiro) de acordo com a estratégia vencedora.
-    
     if n > m:
         jogada = 1
         
@@ -100,12 +83,6 @@ def computador_escolhe_jogada(n,m):
         return n   
 
 def usuario_escolhe_jogada(n,m):
-    # recebe os mesmos parâmetros, solicita que o jogador informe sua jogada e verifica se o valor informado é válido. 4
-    # Se o valor informado for válido, a função deve devolvê-lo; caso contrário, deve solicitar novamente ao usuário que informe uma jogada válida.4
-    # Pseudocódigo:
-        # Recebe jogada
-        # Valida Jogada
-            # Se jogada não for válida, pede de novo
     def valida_jogada(j,n,m):
       if j > m or j > n or j < 1:
         return False
@@ -124,13 +101,3 @@ def usuario_escolhe_jogada(n,m):
     return jogada
 
 campeonato()
-
-
-
-# def campeonato():
-    # Essa nova função deve realizar três partidas seguidas do jogo e, ao final, mostrar o placar dessas três partidas e indicar o vencedor do campeonato. 
-    # O placar deve ser impresso na forma
-    # Placar: Você ??? X ??? Computador
-    # Dado que é possível jogar partidas individuais ou campeonatos, seu programa deve começar solicitando ao usuário que escolha se prefere jogar:
-    # apenas uma partida (opção 1) ou um campeonato (opção 2)
-    
