@@ -1,6 +1,21 @@
 '''
 
 '''
+def campeonato():
+    modo = input("Bem-vindo ao jogo do NIM! Escolha: /n 1 - para jogar uma partida isolada; /n 2 - para jogar um campeonato: ")
+    
+    if modo == "1":
+        print("Voce escolheu uma partida isolada!")
+        partida()
+    else:
+        print("Voce escolheu um campeonato! /n **** Rodada 1 ****")
+        partida()
+        print("**** Rodada 2 ****")
+        partida()
+        print("**** Rodada 3 ****")
+        partida()
+    print("**** Final do campeonato! /n Placar: Você 0 X 3 Computador ****")
+
 
 def partida():
     # não recebe nenhum parâmetro, solicita ao usuário que informe os valores de n e m e inicia o jogo, alternando entre jogadas do computador e do usuário
@@ -23,13 +38,14 @@ def partida():
         print("O computador tirou",n," peças.")
         print("Fim do jogo! O computador ganhou!")
         fim_de_jogo = True
+
     else: 
-        if n % (m + 1) == 0 or n == m or n == 5 and m ==3 or n == 11 and m == 3:
-            print("Computador começa!")
-            vez_computador = True
-        elif n == 9 and m == 2:
+        if n == 9 and m == 2:
             print("Voce começa!")
             vez_computador = False   
+        elif n % (m + 1) == 0 or n == m or n == 5 and m ==3 or n == 11 and m == 3:
+            print("Computador começa!")
+            vez_computador = True
         else:
             print("Voce começa!")
             vez_computador = False
@@ -48,13 +64,13 @@ def partida():
                     fim_de_jogo = True
     
                 else:
-                    print("agora restam ",n," peças no tabuleiro.")
+                    print("agora restam",n," peças no tabuleiro.")
                     vez_computador = False
     
             else:
                 lance_usuario = usuario_escolhe_jogada(n,m)
                 n = n - lance_usuario
-                print("Você tirou ",lance_usuario," peças.")
+                print("Você tirou",lance_usuario," peças.")
 
                 if n <= 0:
                     print("Fim do jogo! você ganhou!")
@@ -107,8 +123,7 @@ def usuario_escolhe_jogada(n,m):
     # Se jogada é válida, verifica se ainda existe um n. Se não houver, retorna zero:
     return jogada
 
-print(usuario_escolhe_jogada(3,5))  
-# partida()
+campeonato()
 
 
 
